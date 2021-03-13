@@ -1,4 +1,4 @@
-package com.IrzStudio.eznote
+package com.irzstudio.eznote
 
 import org.junit.Test
 

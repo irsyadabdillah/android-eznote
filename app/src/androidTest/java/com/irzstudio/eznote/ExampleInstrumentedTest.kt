@@ -1,4 +1,4 @@
-package com.IrzStudio.eznote
+package com.irzstudio.eznote
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
