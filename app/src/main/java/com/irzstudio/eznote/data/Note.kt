@@ -1,4 +1,8 @@
 package com.irzstudio.eznote.data
 
-class Note {
-}
+data class Note (
+    val tittle: String = "",
+    val content: String = ""
+)
+
+
