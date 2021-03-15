@@ -2,4 +2,6 @@
     <string name="app_name">EZ Note</string>
     <string name="tittle">Tittle</string>
     <string name="content">Content</string>
+    <string name="empty">Your Note is Empty</string>
+    <string name="create">Create your note now</string>
 </resources>

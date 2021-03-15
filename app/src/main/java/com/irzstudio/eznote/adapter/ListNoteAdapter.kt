@@ -12,8 +12,14 @@ class ListNoteAdapter (val listNote : ArrayList<Note> ) : RecyclerView.Adapter<L
 
     inner class ListNoteViewHolder (itemview: View) : RecyclerView.ViewHolder (itemview){
         fun bind(note: Note){
-            itemView.tittle.text ="${note.tittle} for position ${adapterPosition}"
-            itemView.content.text = note.content
+            itemView.txt_tittle.text =note.tittle
+            itemView.txt_content.text = note.content
+            if (adapterPosition % 2 == 0){
+                itemView.setBackgroundColor(itemView.context.resources.getColor(R.color.white))
+
+            }else{
+                itemView.setBackgroundColor(itemView.context.resources.getColor(R.color.grey))
+            }
         }
 
     }
