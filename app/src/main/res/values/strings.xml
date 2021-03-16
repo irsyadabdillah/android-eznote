@@ -3,5 +3,11 @@
     <string name="tittle">Tittle</string>
     <string name="content">Content</string>
     <string name="empty">Your Note is Empty</string>
-    <string name="create">Create your note now</string>
+    <string name="createtext">Create your note now</string>
+    <string name="welcome">Selamat datang di EZ Note</string>
+    <string name="tagline">Teman catatan pentingmu</string>
+    <string name="start">Get Stared</string>
+    <string name="create">Create</string>
+
+
 </resources>

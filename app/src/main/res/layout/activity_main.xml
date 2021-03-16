@@ -28,7 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:listitem="@layout/item_list_note"
-            tools:itemCount="10"/>
+            tools:itemCount="5"/>
 
         <include layout="@layout/empty_screen"/>
 
