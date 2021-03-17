@@ -9,7 +9,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.irzstudio.eznote.R
 import kotlinx.android.synthetic.main.bottomsheet_fragment.*
 
-class BottomSheetFragment : BottomSheetDialogFragment() {
+class WelcomeBottomSheetFragment : BottomSheetDialogFragment() {
 
     override fun onCreateView(inflater: LayoutInflater,
                               container: ViewGroup?,

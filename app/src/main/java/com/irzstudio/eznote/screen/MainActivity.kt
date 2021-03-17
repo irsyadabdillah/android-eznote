@@ -1,18 +1,14 @@
 package com.irzstudio.eznote.screen
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Adapter
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.irzstudio.eznote.R
 import com.irzstudio.eznote.adapter.ListNoteAdapter
 import com.irzstudio.eznote.data.Note
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.bottomsheet_fragment.*
 import kotlinx.android.synthetic.main.empty_screen.*
 
 class MainActivity : AppCompatActivity() {
@@ -25,11 +21,15 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val bottomSheetFragment = BottomSheetFragment()
+        val bottomSheetFragment = WelcomeBottomSheetFragment()
 
         //btn_show.setOnClickListener {
             bottomSheetFragment.show(supportFragmentManager, "BottomSheetDialog")
 
+        btn_createoradd.setOnClickListener{
+            val intent = Intent(applicationContext, CreateNoteActivity::class.java)
+            startActivity(intent)
+        }
 
         /*BottomSheetBehavior.from(layout_sheet).apply {
             peekHeight = 200
