@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_empty"
-        android:layout_marginTop="200dp" />
+        android:layout_marginTop="150dp" />
 
     <TextView
         android:text="@string/empty"
@@ -26,6 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
+    <!--
     <Button
         android:id="@+id/btn_show"
         android:layout_width="wrap_content"
@@ -34,5 +35,6 @@
         android:text="@string/create"
         android:textAllCaps="false"
         android:backgroundTint="@color/deepskyblue"/>
+    /-->
 
 </LinearLayout>

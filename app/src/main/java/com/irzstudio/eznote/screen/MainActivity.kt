@@ -27,9 +27,9 @@ class MainActivity : AppCompatActivity() {
 
         val bottomSheetFragment = BottomSheetFragment()
 
-        btn_show.setOnClickListener {
+        //btn_show.setOnClickListener {
             bottomSheetFragment.show(supportFragmentManager, "BottomSheetDialog")
-        }
+
 
         /*BottomSheetBehavior.from(layout_sheet).apply {
             peekHeight = 200
