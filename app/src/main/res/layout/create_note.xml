@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:backgroundTint="@color/white">
 
-        <Toolbar
+        <androidx.appcompat.widget.Toolbar
             android:id="@+id/back_toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -24,18 +24,23 @@
         android:paddingHorizontal="16dp">
 
         <EditText
+            android:id="@+id/txt_tittlenote"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:backgroundTint="@color/white"
-            android:hint="Tittle"
+            android:hint="@string/tittle"
             android:maxLines="1"
+            android:paddingVertical="4dp"
             android:textStyle="bold" />
 
         <EditText
+            android:id="@+id/txt_contentnote"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/white"
-            android:hint="this is sample note" />
+            android:hint="@string/this_is_sample_note"
+            android:paddingVertical="4dp" />
 
     </LinearLayout>
 
