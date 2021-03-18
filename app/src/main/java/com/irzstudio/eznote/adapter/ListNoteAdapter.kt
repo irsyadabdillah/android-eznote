@@ -8,7 +8,15 @@ import com.irzstudio.eznote.R
 import com.irzstudio.eznote.data.Note
 import kotlinx.android.synthetic.main.item_list_note.view.*
 
+interface OnNoteListener{
+    fun onDelete(note: Note)
+    fun onClick(note: Note)
+}
+
 class ListNoteAdapter (val listNote : ArrayList<Note> ) : RecyclerView.Adapter<ListNoteAdapter.ListNoteViewHolder>() {
+
+    var onClickListener: OnNoteListener? = null
+
 
     inner class ListNoteViewHolder (itemview: View) : RecyclerView.ViewHolder (itemview){
         fun bind(note: Note){
@@ -19,6 +27,12 @@ class ListNoteAdapter (val listNote : ArrayList<Note> ) : RecyclerView.Adapter<L
 
             }else{
                 itemView.setBackgroundColor(itemView.context.resources.getColor(R.color.grey))
+            }
+            itemView.img_delete.setOnClickListener {
+                onClickListener?.onDelete(note)
+            }
+            itemView.setOnClickListener {
+                onClickListener?.onClick(note)
             }
         }
 

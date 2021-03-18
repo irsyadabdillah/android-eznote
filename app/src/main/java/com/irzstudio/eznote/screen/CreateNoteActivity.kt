@@ -16,12 +16,14 @@ import java.util.zip.Inflater
 class CreateNoteActivity : AppCompatActivity() {
 
     private var database: NoteDataBase? = null
+    private var noteExtra : Note? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.create_note)
 
         database = NoteDataBase.getInstance(this)
+        noteExtra = intent.getParcelableExtra("note")
 
         //menjadikan toolbar ke actionbar
         setSupportActionBar(back_toolbar)
@@ -33,7 +35,14 @@ class CreateNoteActivity : AppCompatActivity() {
         back_toolbar.setNavigationOnClickListener {
             finish()
         }
+        setNoteData()
+    }
 
+    private fun setNoteData(){
+        if (noteExtra != null){
+            txt_tittlenote.setText(noteExtra?.tittle)
+            txt_contentnote.setText(noteExtra?.content)
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -59,8 +68,15 @@ class CreateNoteActivity : AppCompatActivity() {
         } else {
             val tittleNote = txt_tittlenote.text.toString()
             val tittleContent = txt_contentnote.text.toString()
-            val note = Note(tittle = tittleNote, content = tittleContent)
-            database?.noteDao()?.insert(note)
+
+            if (noteExtra == null){
+                val note = Note(tittle = tittleNote, content = tittleContent)
+                database?.noteDao()?.insert(note)
+            }else{
+                val note = Note(tittle = tittleNote, content = tittleContent, id = noteExtra?.id ?: 0)
+                database?.noteDao()?.update(note)
+            }
+
             finish()
 
         }

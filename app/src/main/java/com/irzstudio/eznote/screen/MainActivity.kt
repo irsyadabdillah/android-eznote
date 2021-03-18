@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.irzstudio.eznote.R
 import com.irzstudio.eznote.adapter.ListNoteAdapter
+import com.irzstudio.eznote.adapter.OnNoteListener
 import com.irzstudio.eznote.data.Note
 import com.irzstudio.eznote.data.NoteDataBase
 import kotlinx.android.synthetic.main.activity_main.*
@@ -61,7 +62,6 @@ class MainActivity : AppCompatActivity() {
         val dataFromDb = database?.noteDao()?.getAll().orEmpty()
         dataNote.addAll(dataFromDb)
 
-
         if (dataNote.size == 0) {
             recyclerview_note.visibility = View.GONE
             layout_empty.visibility = View.VISIBLE
@@ -71,6 +71,18 @@ class MainActivity : AppCompatActivity() {
         }
 
         adapterNote = ListNoteAdapter(dataNote)
+        adapterNote.onClickListener = object  : OnNoteListener{
+            override fun onDelete(note: Note) {
+                database?.noteDao()?.delete(note)
+                showDataAdapter()
+            }
+
+            override fun onClick(note: Note) {
+               val intent = Intent(applicationContext, CreateNoteActivity::class.java)
+                intent.putExtra("note", note)
+                startActivity(intent)
+            }
+        }
         recyclerview_note.adapter = adapterNote
         recyclerview_note.layoutManager = LinearLayoutManager(this)
 
