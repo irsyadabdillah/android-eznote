@@ -7,14 +7,21 @@ import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.irzstudio.eznote.R
+import com.irzstudio.eznote.data.Note
+import com.irzstudio.eznote.data.NoteDataBase
 import kotlinx.android.synthetic.main.create_note.*
 import java.util.zip.Inflater
 
 
 class CreateNoteActivity : AppCompatActivity() {
+
+    private var database: NoteDataBase? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.create_note)
+
+        database = NoteDataBase.getInstance(this)
 
         //menjadikan toolbar ke actionbar
         setSupportActionBar(back_toolbar)
@@ -26,14 +33,6 @@ class CreateNoteActivity : AppCompatActivity() {
         back_toolbar.setNavigationOnClickListener {
             finish()
         }
-        /* cara memanggil dengan interface
-        back_toolbar.setNavigationOnClickListener(object : View.OnClickListener{
-            override fun onClick(v: View?) {
-                finish()
-            }
-        })
-         */
-
 
     }
 
@@ -55,11 +54,15 @@ class CreateNoteActivity : AppCompatActivity() {
 
     private fun saveNote() {
         if (txt_tittlenote.length() == 0 || txt_contentnote.length() == 0) {
-            Toast.makeText(applicationContext, "Tittle or content is empty", Toast.LENGTH_SHORT).show()
+            Toast.makeText(applicationContext, "Tittle or content is empty", Toast.LENGTH_SHORT)
+                .show()
         } else {
             val tittleNote = txt_tittlenote.text.toString()
-            val titleContent = txt_contentnote.text.toString()
-            Toast.makeText(applicationContext, "$tittleNote" + " " + "$titleContent",  Toast.LENGTH_SHORT).show()
+            val tittleContent = txt_contentnote.text.toString()
+            val note = Note(tittle = tittleNote, content = tittleContent)
+            database?.noteDao()?.insert(note)
+            finish()
+
         }
     }
 }
